@@ -20,7 +20,9 @@
       <el-row>
         <el-col :span="12">
           <div class="preview-vue-rss-feed">
+            <div v-if="feedUrl">
             <VueRssFeed :feedUrl="feedUrl" :name="name" :limit="limit"/>
+            </div>
           </div>
         </el-col>
         <el-col :span="12">
@@ -57,29 +59,8 @@
           <div class="examples">
             <h3>Examples</h3>
             <ul>
-              <li>
-                <a
-                  href="https://rss.app/feeds/hmsyAr3PyniBpmOd.xml"
-                  @click="loadExample"
-                >CNN Politics</a>
-              </li>
-              <li>
-                <a
-                  href="https://rss.app/feeds/TYNzLiPKDRnSuxr7.xml"
-                  @click="loadExample"
-                >NPR: Arts & life</a>
-              </li>
-              <li>
-                <a
-                  href="https://rss.app/feeds/feHQ6ZmAWxS0zjj6.xml"
-                  @click="loadExample"
-                >YouTube: PewDiePie</a>
-              </li>
-              <li>
-                <a
-                  href="https://rss.app/feeds/YxkSC62K6JgmWxq6.xml"
-                  @click="loadExample"
-                >Google news: Bitcoin</a>
+              <li v-for="url in urls" :key="url.name">
+                <a :href="url.path" @click="loadExample">{{url.name}}</a>
               </li>
             </ul>
           </div>
@@ -95,6 +76,7 @@
 
 <script>
 import VueRssFeed from "./VueRssFeed.vue";
+import axios from 'axios';
 
 const PIXALS_FROM_BOTTOM = 200;
 
@@ -105,13 +87,22 @@ export default {
   },
   data() {
     return {
-      feedUrl: "https://rss.app/feeds/hmsyAr3PyniBpmOd.xml",
+      feedUrl: null,
       name: "",
       limit: 4,
       rssFeedForm: {
-        feedUrl: "https://rss.app/feeds/hmsyAr3PyniBpmOd.xml"
-      }
+        feedUrl: null
+      },
+      urls: []
     };
+  },
+  created() {
+    axios.get("urllist.json")
+    .then(response => {
+      this.urls = response.data;
+      this.feedUrl = response.data[0].path;
+      this.rssFeedForm.feedUrl = this.feedUrl;
+    });
   },
   mounted() {
     this.scrollEvent = window.addEventListener("scroll", () => {
