@@ -20,6 +20,7 @@ $ yarn electron:build (Desktop App)
 ```
 
 ### Dependency
+|    |     |
 |:---|:---:|
 |yarn|1.22.4|
 |axios|0.19.2|
