@@ -69,6 +69,10 @@ export default {
               this.error = `Error occured while parsing RSS Feed ${err.toString()}`;
             } else {
               this.feed = parsed;
+              var target = {};
+              target.path = this.feedUrl;
+              target.name = this.feed.title;
+              this.$emit('feedmain', target); 
             }
           });
         } else {

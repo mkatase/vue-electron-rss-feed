@@ -1,6 +1,6 @@
 <template>
   <div class="vue-rss-feed">
-    <Feed :feedUrl="feedUrl" :name="name" :limit="limit"/>
+    <Feed :feedUrl="feedUrl" :name="name" :limit="limit" @feedmain="getName"/>
   </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
     feedUrl: String,
     name: String,
     limit: Number
+  },
+  methods: {
+    getName(evt) {
+      this.$emit('demomain', evt);
+    }
   }
 };
 </script>

@@ -21,7 +21,7 @@
         <el-col :span="12">
           <div class="preview-vue-rss-feed">
             <div v-if="feedUrl">
-            <VueRssFeed :feedUrl="feedUrl" :name="name" :limit="limit"/>
+            <VueRssFeed :feedUrl="feedUrl" :name="name" :limit="limit" @demomain="getName"/>
             </div>
           </div>
         </el-col>
@@ -134,6 +134,12 @@ export default {
       evt.preventDefault();
       this.rssFeedForm.feedUrl = evt.toElement.href;
       this.feedUrl = evt.toElement.href;
+    },
+    getName(evt) {
+      var url = this.urls.filter(url => (url.path === evt.path));
+      if ( url.length == 0 ) {
+        this.urls.push(evt);
+      }
     }
   },
   watch: {

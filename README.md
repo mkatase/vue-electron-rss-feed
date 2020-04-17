@@ -33,6 +33,7 @@ $ yarn electron:build (Desktop App)
 * Fedora 31 5.5.13-200 (on x86_64)
 
 ### Version
+* v0.3.0 2020/04/17 use to emit module for blog title
 * v0.2.0 2020/04/14 use to axios module for reading external json file
 * v0.1.0 2020/04/13 new creation
 
