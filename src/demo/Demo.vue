@@ -60,7 +60,7 @@
             <h3>Examples</h3>
             <ul>
               <li v-for="url in urls" :key="url.name">
-                <a :href="url.path" @click="loadExample">{{url.name}}</a>
+                <a :href="url.path" @click="loadExample">{{url.name}}</a> <el-button type="delete" icon="el-icon-delete" round></el-button>
               </li>
             </ul>
           </div>
