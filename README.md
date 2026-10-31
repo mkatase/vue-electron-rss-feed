@@ -1,3 +1,8 @@
+# [ARCHIVED] vue-rss-feed
+
+> [!NOTE]
+This repository was created in 2020 and is now archived (read-only). It relies on a legacy stack (Vue 2.5 / Webpack 4) and is no longer actively maintained. Security alerts and node version compatibility updates will not be addressed here. This project is kept publicly available solely for historical reference.
+
 # vue-electron-rss-feed
 A simple component to embed beautiful RSS feeds with Vuejs and Electron.  
 Original Code is [vue-rss-feed](https://github.com/RSSapp/vue-rss-feed).
